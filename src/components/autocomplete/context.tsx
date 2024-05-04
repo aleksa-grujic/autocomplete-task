@@ -74,14 +74,14 @@ export const AutoCompleteProvider: React.FC<AutocompleteContextProps> = ({childr
 
     const handleInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         const term = e.target.value;
-        // Check if the input is empty or contains only spaces to avoid unnecessary API calls
-        const isEmpty = /^\s*$/.test(term);
+        // Regex to prevent search with only spaces or ending with more than one space.
+        const regex = /^\s+$|.*\s{2,}$/;
 
-        debouncedFetchData(term);
-        setSearchTerm(term);
+        const isValid = !regex.test(term);
+        setSearchTerm(prev => isValid ? term : prev);
+        isValid && debouncedFetchData(term);
 
-        if (isEmpty) {
-            setSearchTerm('');
+        if (term === '') {
             setData(null);
             setActiveSuggestion(null);
         }

@@ -50,7 +50,7 @@ const AutocompleteComponent: React.FC<AutocompleteProps> =
     }
 
 
-export const Autocomplete: React.FunctionComponent<AutocompleteProps & AutocompleteContextProps> = (props) => {
+export const Autocomplete: React.FunctionComponent<AutocompleteProps & Omit<AutocompleteContextProps, 'children'>> = (props) => {
     const {debounceTime, baseUrl, ...autocompleteProps} = props;
     return (
         <AutoCompleteProvider debounceTime={debounceTime} baseUrl={baseUrl}>
