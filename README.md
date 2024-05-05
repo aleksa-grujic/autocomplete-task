@@ -1,30 +1,36 @@
-# React + TypeScript + Vite
+# Autocomplete Component for Deel Frontend Developer Role
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is an Autocomplete component designed for the task assignment in the Deel Frontend Developer role. It includes the
+essential features that an Autocomplete component should have:
 
-Currently, two official plugins are available:
+1. An input field with placeholder text,
+2. A suggestion list that appears after data is fetched from the API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Functionality
 
-## Expanding the ESLint configuration
+The component operates by calling the `fetchData` function upon typing, which retrieves data from the real API, filters
+it, and displays it as suggestions that the user can use to fill in their input form. Navigation through the suggestion
+list can be done using the Tab, ArrowUp, and ArrowDown keys, and a suggestion can be selected by pressing enter.
+Suggestions can also be selected by clicking on them.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Getting Started
 
-- Configure the top-level `parserOptions` property like this:
+To run the application, follow these steps:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. `npm i`
+2. `npm run dev`
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Running Storybook
+
+To display the component options using Storybook, execute the following commands:
+
+1. `npm i`
+2. `npm run storybook`
+
+## Future Improvements
+
+1. Implement unit testing,
+2. Create generic types that could be passed along with `BaseUrl` in case the usage type of `fetchData` changes,
+3. Extract `fetchData` and create an additional context or something similar to reuse the same data in multiple
+   different places if needed,
+4. Further styling enhancements
